@@ -1,0 +1,15 @@
+C:\Users\pieter.alberts\Documents\Visual Studio 2013\Projects\WoodWorkingSA\Services\bin\Debug\Services.dll
+C:\Users\pieter.alberts\Documents\Visual Studio 2013\Projects\WoodWorkingSA\Services\bin\Debug\Services.pdb
+C:\Users\pieter.alberts\Documents\Visual Studio 2013\Projects\WoodWorkingSA\Services\obj\Debug\Services.csprojResolveAssemblyReference.cache
+C:\Users\pieter.alberts\Documents\Visual Studio 2013\Projects\WoodWorkingSA\Services\obj\Debug\Services.dll
+C:\Users\pieter.alberts\Documents\Visual Studio 2013\Projects\WoodWorkingSA\Services\obj\Debug\Services.pdb
+C:\Users\pieter.alberts\documents\visual studio 2013\Projects\WoodWorkingSA\Services\bin\Debug\Services.dll.config
+C:\Users\pieter.alberts\documents\visual studio 2013\Projects\WoodWorkingSA\Services\bin\Debug\EntityFramework.dll
+C:\Users\pieter.alberts\documents\visual studio 2013\Projects\WoodWorkingSA\Services\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\pieter.alberts\documents\visual studio 2013\Projects\WoodWorkingSA\Services\bin\Debug\Repository.dll
+C:\Users\pieter.alberts\documents\visual studio 2013\Projects\WoodWorkingSA\Services\bin\Debug\System.Linq.Dynamic.dll
+C:\Users\pieter.alberts\documents\visual studio 2013\Projects\WoodWorkingSA\Services\bin\Debug\Repository.pdb
+C:\Users\pieter.alberts\documents\visual studio 2013\Projects\WoodWorkingSA\Services\bin\Debug\EntityFramework.xml
+C:\Users\pieter.alberts\documents\visual studio 2013\Projects\WoodWorkingSA\Services\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\pieter.alberts\documents\visual studio 2013\Projects\WoodWorkingSA\Services\bin\Debug\MySql.Data.dll
+C:\Users\pieter.alberts\documents\visual studio 2013\Projects\WoodWorkingSA\Services\bin\Debug\mysql.data.entity.EF6.dll

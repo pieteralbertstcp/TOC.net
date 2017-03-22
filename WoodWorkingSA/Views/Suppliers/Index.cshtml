@@ -1,0 +1,59 @@
+﻿
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/MasterTemplate/AuthentucatedMasterTemplate.cshtml";
+    }
+    <script type="text/javascript">
+    function myMap() {
+        var mapCanvas = document.getElementById("map");
+        var mapOptions = {
+            center: new google.maps.LatLng(-27.951549, 24.084263),
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            zoom: 5
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+
+        var markerDetails = ["TEST123"];
+        var markerLats = [-33.960239];
+        var markerLngs = [22.45644];
+        var markerColors = ["5DBCD2"];
+
+        AddMapMarkers(markerDetails, markerLats, markerLngs, map, markerColors);
+        addLegend(map);
+    }
+
+    function AddMapMarkers(markerDetails, lat, long, map, markerColors) {
+        var infowindow = new google.maps.InfoWindow();
+        var marker, i;
+        for (i = 0; i < markerDetails.length; i++) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(lat[i], long[i]),
+                map: map,
+                icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|' + markerColors[i]
+            });
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                    infowindow.setContent(markerDetails[i]);
+                    infowindow.open(map, marker);
+                }
+            })(marker, i));
+        }
+    }
+
+    function addLegend(map) {
+        var legend = document.getElementById('legend');
+        var data = [];
+        @foreach (var row in ViewBag.suppliers)
+            {
+                @:data.push(["@row.supplier_name"]);
+            }
+        legend.appendChild(data);
+        map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
+    }
+    </script>
+
+    <h3>Suppliers</h3>
+    Below is a map of all the recommended suppliers in South Africa.<br><br>
+    <div id="map" style="width: 100%; height: 500px"></div>
+    <div id="legend"><h3>Legend</h3></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYf2xlYXpSP_hTT2aDUq5KGPwapNKyrRk&callback=myMap"></script>

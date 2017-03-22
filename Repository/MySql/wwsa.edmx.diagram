@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="075266830ba542e4918fbe57b1275f37" Name="Diagram1" >
+        <EntityTypeShape EntityType="wwsaModel.youtube_recommendations" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="wwsaModel.suppliers" Width="1.5" PointX="3.75" PointY="1" />
+        <EntityTypeShape EntityType="wwsaModel.suppliers_locations" Width="1.5" PointX="6" PointY="1" />
+        <EntityTypeShape EntityType="wwsaModel.tools" Width="1.5" PointX="0.75" PointY="4.75" />
+        <AssociationConnector Association="wwsaModel.suppliers_locations_ibfk_1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

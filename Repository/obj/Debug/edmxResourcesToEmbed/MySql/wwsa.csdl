@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="wwsaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="wwsaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="youtube_recommendations" EntityType="wwsaModel.youtube_recommendations" />
+    <EntitySet Name="suppliers" EntityType="wwsaModel.suppliers" />
+    <EntitySet Name="suppliers_locations" EntityType="wwsaModel.suppliers_locations" />
+    <EntitySet Name="tools" EntityType="wwsaModel.tools" />
+    <AssociationSet Name="suppliers_locations_ibfk_1" Association="wwsaModel.suppliers_locations_ibfk_1">
+      <End Role="suppliers" EntitySet="suppliers" />
+      <End Role="suppliers_locations" EntitySet="suppliers_locations" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="youtube_recommendations">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Name="channel_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="url" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+    <Property Name="image_url" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="date_created" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date_updated" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="suppliers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Name="supplier_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="url" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+    <Property Name="image_url" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="supplier_marker_color" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="date_created" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date_updated" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="suppliers_locations" Relationship="wwsaModel.suppliers_locations_ibfk_1" FromRole="suppliers" ToRole="suppliers_locations" />
+  </EntityType>
+  <EntityType Name="suppliers_locations">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Name="supplier_id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="physical_address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="telephone_number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="lng" Type="Single" />
+    <Property Name="lat" Type="Single" />
+    <Property Name="date_created" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date_updated" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="suppliers" Relationship="wwsaModel.suppliers_locations_ibfk_1" FromRole="suppliers_locations" ToRole="suppliers" />
+  </EntityType>
+  <EntityType Name="tools">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Name="tool_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="date_created" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date_updated" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <Association Name="suppliers_locations_ibfk_1">
+    <End Type="wwsaModel.suppliers" Role="suppliers" Multiplicity="0..1" />
+    <End Type="wwsaModel.suppliers_locations" Role="suppliers_locations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="suppliers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="suppliers_locations">
+        <PropertyRef Name="supplier_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

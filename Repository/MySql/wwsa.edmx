@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="wwsaModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="suppliers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="supplier_name" Type="varchar" MaxLength="100" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+          <Property Name="url" Type="varchar" MaxLength="56" />
+          <Property Name="image_url" Type="varchar" MaxLength="250" />
+          <Property Name="supplier_marker_color" Type="varchar" MaxLength="6" />
+          <Property Name="date_created" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_updated" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="suppliers_locations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="supplier_id" Type="varchar" MaxLength="100" />
+          <Property Name="physical_address" Type="varchar" MaxLength="255" />
+          <Property Name="telephone_number" Type="varchar" MaxLength="10" />
+          <Property Name="lng" Type="float" />
+          <Property Name="lat" Type="float" />
+          <Property Name="date_created" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_updated" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tools">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="tool_name" Type="varchar" MaxLength="100" />
+          <Property Name="description" Type="varchar" MaxLength="2000" />
+          <Property Name="date_created" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_updated" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="youtube_recommendations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="channel_name" Type="varchar" MaxLength="100" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+          <Property Name="url" Type="varchar" MaxLength="56" />
+          <Property Name="image_url" Type="varchar" MaxLength="250" />
+          <Property Name="date_created" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_updated" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <Association Name="suppliers_locations_ibfk_1">
+          <End Role="suppliers" Type="Self.suppliers" Multiplicity="0..1" />
+          <End Role="suppliers_locations" Type="Self.suppliers_locations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="suppliers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="suppliers_locations">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="wwsaModelStoreContainer">
+          <EntitySet Name="suppliers" EntityType="Self.suppliers" Schema="wwsa" store:Type="Tables" />
+          <EntitySet Name="suppliers_locations" EntityType="Self.suppliers_locations" Schema="wwsa" store:Type="Tables" />
+          <EntitySet Name="tools" EntityType="Self.tools" Schema="wwsa" store:Type="Tables" />
+          <EntitySet Name="youtube_recommendations" EntityType="Self.youtube_recommendations" Schema="wwsa" store:Type="Tables" />
+          <AssociationSet Name="suppliers_locations_ibfk_1" Association="Self.suppliers_locations_ibfk_1">
+            <End Role="suppliers" EntitySet="suppliers" />
+            <End Role="suppliers_locations" EntitySet="suppliers_locations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="wwsaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="wwsaEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="youtube_recommendations" EntityType="wwsaModel.youtube_recommendations" />
+          <EntitySet Name="suppliers" EntityType="wwsaModel.suppliers" />
+          <EntitySet Name="suppliers_locations" EntityType="wwsaModel.suppliers_locations" />
+          <EntitySet Name="tools" EntityType="wwsaModel.tools" />
+          <AssociationSet Name="suppliers_locations_ibfk_1" Association="wwsaModel.suppliers_locations_ibfk_1">
+            <End Role="suppliers" EntitySet="suppliers" />
+            <End Role="suppliers_locations" EntitySet="suppliers_locations" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="youtube_recommendations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="channel_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="url" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+          <Property Name="image_url" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="date_created" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_updated" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="suppliers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="supplier_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="url" Type="String" MaxLength="56" FixedLength="false" Unicode="false" />
+          <Property Name="image_url" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="supplier_marker_color" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="date_created" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_updated" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="suppliers_locations" Relationship="wwsaModel.suppliers_locations_ibfk_1" FromRole="suppliers" ToRole="suppliers_locations" />
+        </EntityType>
+        <EntityType Name="suppliers_locations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="supplier_id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="physical_address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="telephone_number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="lng" Type="Single" />
+          <Property Name="lat" Type="Single" />
+          <Property Name="date_created" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_updated" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="suppliers" Relationship="wwsaModel.suppliers_locations_ibfk_1" FromRole="suppliers_locations" ToRole="suppliers" />
+        </EntityType>
+        <EntityType Name="tools">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="tool_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="date_created" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_updated" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <Association Name="suppliers_locations_ibfk_1">
+          <End Type="wwsaModel.suppliers" Role="suppliers" Multiplicity="0..1" />
+          <End Type="wwsaModel.suppliers_locations" Role="suppliers_locations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="suppliers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="suppliers_locations">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="wwsaModelStoreContainer" CdmEntityContainer="wwsaEntities" >
+          <EntitySetMapping Name="youtube_recommendations">
+            <EntityTypeMapping TypeName="wwsaModel.youtube_recommendations">
+              <MappingFragment StoreEntitySet="youtube_recommendations">
+                <ScalarProperty Name="date_updated" ColumnName="date_updated" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+                <ScalarProperty Name="image_url" ColumnName="image_url" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="channel_name" ColumnName="channel_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="suppliers">
+            <EntityTypeMapping TypeName="wwsaModel.suppliers">
+              <MappingFragment StoreEntitySet="suppliers">
+                <ScalarProperty Name="date_updated" ColumnName="date_updated" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+                <ScalarProperty Name="supplier_marker_color" ColumnName="supplier_marker_color" />
+                <ScalarProperty Name="image_url" ColumnName="image_url" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="supplier_name" ColumnName="supplier_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="suppliers_locations">
+            <EntityTypeMapping TypeName="wwsaModel.suppliers_locations">
+              <MappingFragment StoreEntitySet="suppliers_locations">
+                <ScalarProperty Name="date_updated" ColumnName="date_updated" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="lng" ColumnName="lng" />
+                <ScalarProperty Name="telephone_number" ColumnName="telephone_number" />
+                <ScalarProperty Name="physical_address" ColumnName="physical_address" />
+                <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tools">
+            <EntityTypeMapping TypeName="wwsaModel.tools">
+              <MappingFragment StoreEntitySet="tools">
+                <ScalarProperty Name="date_updated" ColumnName="date_updated" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="tool_name" ColumnName="tool_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
