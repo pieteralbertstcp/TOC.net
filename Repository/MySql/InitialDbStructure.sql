@@ -40,6 +40,27 @@ date_created timestamp default now(),
 date_updated timestamp default now() on update now()) comment 'Used to store tool descriptions and information';
 
 
+CREATE TABLE `members` (
+  `id` varchar(36) NOT NULL,
+  `first_name` varchar(25) NOT NULL,
+  `last_name` varchar(25) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `cell` varchar(15) NOT NULL,
+  `id_number` varchar(13) NOT NULL,
+  `username` varchar(25) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `profile_image` longblob,
+  `started_woodworking_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `address` varchar(255) NOT NULL,
+  `lng` float(10,6) DEFAULT NULL,
+  `lat` float(10,6) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Used to store general general member details.';
+
+
+
 INSERT INTO wwsa.suppliers
 (id, supplier_name, description, url, image_url,supplier_marker_color, date_created, date_updated)
 VALUES('42c5e7cd-03c6-4eb5-b114-ee808e4d9765', 'Gelmar', 'Gelmar Handle and Furniture Fittings has an extensive range of well-priced handles.', 'http://www.gelmar.co.za', 'http://www.gelmar.co.za/image/data/gelmar_logo2.jpg',  '5DBCD2',CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);

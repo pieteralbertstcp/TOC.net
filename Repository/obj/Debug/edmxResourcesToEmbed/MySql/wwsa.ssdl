@@ -1,5 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="wwsaModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="members">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="36" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="last_name" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="cell" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="id_number" Type="varchar" MaxLength="13" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="date_created" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date_updated" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="profile_image" Type="longblob" />
+    <Property Name="started_woodworking_on" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="lng" Type="float" />
+    <Property Name="lat" Type="float" />
+  </EntityType>
   <EntityType Name="suppliers">
     <Key>
       <PropertyRef Name="id" />
@@ -19,8 +39,7 @@
     </Key>
     <Property Name="id" Type="varchar" MaxLength="36" Nullable="false" />
     <Property Name="supplier_id" Type="varchar" MaxLength="100" />
-    <Property Name="physical_address" Type="varchar" MaxLength="255" />
-    <Property Name="telephone_number" Type="varchar" MaxLength="10" />
+    <Property Name="telephone_number" Type="varchar" MaxLength="20" />
     <Property Name="lng" Type="float" />
     <Property Name="lat" Type="float" />
     <Property Name="date_created" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
@@ -61,6 +80,7 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="wwsaModelStoreContainer">
+    <EntitySet Name="members" EntityType="Self.members" Schema="wwsa" store:Type="Tables" />
     <EntitySet Name="suppliers" EntityType="Self.suppliers" Schema="wwsa" store:Type="Tables" />
     <EntitySet Name="suppliers_locations" EntityType="Self.suppliers_locations" Schema="wwsa" store:Type="Tables" />
     <EntitySet Name="tools" EntityType="Self.tools" Schema="wwsa" store:Type="Tables" />

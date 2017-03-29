@@ -1,59 +1,61 @@
-﻿
-    @{
-        ViewBag.Title = "Index";
-        Layout = "~/MasterTemplate/AuthentucatedMasterTemplate.cshtml";
-    }
-    <script type="text/javascript">
-    function myMap() {
-        var mapCanvas = document.getElementById("map");
-        var mapOptions = {
-            center: new google.maps.LatLng(-27.951549, 24.084263),
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            zoom: 5
-        }
-        var map = new google.maps.Map(mapCanvas, mapOptions);
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/MasterTemplate/AuthentucatedMasterTemplate.cshtml";
+}
+<script type="text/javascript">
 
-        var markerDetails = ["TEST123"];
-        var markerLats = [-33.960239];
-        var markerLngs = [22.45644];
-        var markerColors = ["5DBCD2"];
 
-        AddMapMarkers(markerDetails, markerLats, markerLngs, map, markerColors);
-        addLegend(map);
-    }
-
-    function AddMapMarkers(markerDetails, lat, long, map, markerColors) {
-        var infowindow = new google.maps.InfoWindow();
-        var marker, i;
-        for (i = 0; i < markerDetails.length; i++) {
-            marker = new google.maps.Marker({
-                position: new google.maps.LatLng(lat[i], long[i]),
-                map: map,
-                icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|' + markerColors[i]
-            });
-            google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                return function () {
-                    infowindow.setContent(markerDetails[i]);
-                    infowindow.open(map, marker);
+    function getPointersData(map) {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: '@Url.Action("GetPointerData", "Suppliers")',
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                for (var i = 0; i < data.body.length; i++) {
+                    var json = JSON.parse(data.body[i]);
+                    AddMapMarkers(json.popupWindowValue, json.lat, json.lng, map, json.markerColor);
                 }
-            })(marker, i));
-        }
-    }
-
-    function addLegend(map) {
-        var legend = document.getElementById('legend');
-        var data = [];
-        @foreach (var row in ViewBag.suppliers)
-            {
-                @:data.push(["@row.supplier_name"]);
+            },
+            error: function (xhr, status, error) {
+                console.log(error);
             }
-        legend.appendChild(data);
-        map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
+        });
     }
-    </script>
+</script>
 
-    <h3>Suppliers</h3>
-    Below is a map of all the recommended suppliers in South Africa.<br><br>
-    <div id="map" style="width: 100%; height: 500px"></div>
-    <div id="legend"><h3>Legend</h3></div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYf2xlYXpSP_hTT2aDUq5KGPwapNKyrRk&callback=myMap"></script>
+<h3>Suppliers</h3>
+Below is a map of all the recommended suppliers in South Africa.<br><br>
+@Html.Partial("~/Views/Partials/GoogleMap.cshtml") <br> 
+
+<h3>Legend</h3>
+<table>
+    @for (int i = 0; i < ViewBag.suppliers.Count; i = i + 3)
+    {
+        <tr>
+            <td style="padding: 5px;">
+                <div style="width: 25px; border:1px solid black; height: 25px; background-color: #@ViewBag.suppliers[i].supplier_marker_color;"></div>
+            </td>
+            <td><a href="@ViewBag.suppliers[i].url" target="_blank" style="color: black;"> @ViewBag.suppliers[i].supplier_name</a></td>
+            @if (ViewBag.suppliers.Count > (i + 1))
+            {
+                <td style="padding: 5px; padding-left: 100px;">
+                    <div style="width: 25px;border:1px solid black; height: 25px; background-color: #@ViewBag.suppliers[i + 1].supplier_marker_color"></div>
+                </td>
+                <td>
+                    <a href="@ViewBag.suppliers[i + 1].url" target="_blank" style="color: black;"> @ViewBag.suppliers[i + 1].supplier_name</a>
+                </td>
+            }
+            @if (ViewBag.suppliers.Count > (i + 2))
+            {
+                <td style="padding: 5px; padding-left: 100px;">
+                    <div style="width: 25px; border:1px solid black; height: 25px; background-color: #@ViewBag.suppliers[i + 2].supplier_marker_color"></div>
+                </td>
+                <td>
+                    <a href="@ViewBag.suppliers[i + 2].url" target="_blank" style="color: black;"> @ViewBag.suppliers[i + 2].supplier_name</a>
+                </td>
+            }
+        </tr>
+    }
+</table>
+

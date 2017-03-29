@@ -10,3 +10,15 @@ C:\Users\pieter.alberts\documents\visual studio 2013\Projects\WoodWorkingSA\Repo
 C:\Users\pieter.alberts\documents\visual studio 2013\Projects\WoodWorkingSA\Repository\bin\Debug\mysql.data.entity.EF6.dll
 C:\Users\pieter.alberts\documents\visual studio 2013\Projects\WoodWorkingSA\Repository\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\pieter.alberts\documents\visual studio 2013\Projects\WoodWorkingSA\Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\DEV\TOC.net\Repository\bin\Debug\Repository.dll.config
+C:\DEV\TOC.net\Repository\bin\Debug\Repository.dll
+C:\DEV\TOC.net\Repository\bin\Debug\Repository.pdb
+C:\DEV\TOC.net\Repository\bin\Debug\EntityFramework.dll
+C:\DEV\TOC.net\Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\DEV\TOC.net\Repository\bin\Debug\MySql.Data.dll
+C:\DEV\TOC.net\Repository\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\DEV\TOC.net\Repository\bin\Debug\EntityFramework.xml
+C:\DEV\TOC.net\Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\DEV\TOC.net\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
+C:\DEV\TOC.net\Repository\obj\Debug\Repository.dll
+C:\DEV\TOC.net\Repository\obj\Debug\Repository.pdb

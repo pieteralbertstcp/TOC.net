@@ -149,13 +149,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdditionalMaterialController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\membersController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Controllers\ToolsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\SuppliersModel.cs" />
-    <Compile Include="Models\YoutubeRecommendationsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -294,6 +293,8 @@
     <Content Include="Views\Tools\Index.cshtml" />
     <Content Include="Views\Suppliers\Index.cshtml" />
     <Content Include="Views\AdditionalMaterial\Index.cshtml" />
+    <Content Include="Views\Partials\GoogleMap.cshtml" />
+    <Content Include="Views\Members\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

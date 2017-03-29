@@ -12,16 +12,22 @@ namespace Repository.MySql
     using System;
     using System.Collections.Generic;
     
-    public partial class suppliers_locations
+    public partial class members
     {
         public string id { get; set; }
-        public string supplier_id { get; set; }
-        public string telephone_number { get; set; }
-        public Nullable<float> lng { get; set; }
-        public Nullable<float> lat { get; set; }
+        public string first_name { get; set; }
+        public string last_name { get; set; }
+        public string email { get; set; }
+        public string cell { get; set; }
+        public string id_number { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
         public System.DateTime date_created { get; set; }
         public System.DateTime date_updated { get; set; }
-    
-        public virtual suppliers suppliers { get; set; }
+        public byte[] profile_image { get; set; }
+        public System.DateTime started_woodworking_on { get; set; }
+        public string address { get; set; }
+        public Nullable<float> lng { get; set; }
+        public Nullable<float> lat { get; set; }
     }
 }

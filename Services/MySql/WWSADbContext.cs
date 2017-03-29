@@ -16,7 +16,6 @@ namespace Services.MySql
         protected wwsaEntities _dbContext;    // this is protected for a reason, do not change it
         private bool disposed = false;
 
-
         #region Ctor
         protected WWSADbContext()
         {

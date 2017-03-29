@@ -36,7 +36,6 @@
           <ScalarProperty Name="lat" ColumnName="lat" />
           <ScalarProperty Name="lng" ColumnName="lng" />
           <ScalarProperty Name="telephone_number" ColumnName="telephone_number" />
-          <ScalarProperty Name="physical_address" ColumnName="physical_address" />
           <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
@@ -49,6 +48,27 @@
           <ScalarProperty Name="date_created" ColumnName="date_created" />
           <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="tool_name" ColumnName="tool_name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="members">
+      <EntityTypeMapping TypeName="wwsaModel.members">
+        <MappingFragment StoreEntitySet="members">
+          <ScalarProperty Name="lat" ColumnName="lat" />
+          <ScalarProperty Name="lng" ColumnName="lng" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="started_woodworking_on" ColumnName="started_woodworking_on" />
+          <ScalarProperty Name="profile_image" ColumnName="profile_image" />
+          <ScalarProperty Name="date_updated" ColumnName="date_updated" />
+          <ScalarProperty Name="date_created" ColumnName="date_created" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="id_number" ColumnName="id_number" />
+          <ScalarProperty Name="cell" ColumnName="cell" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

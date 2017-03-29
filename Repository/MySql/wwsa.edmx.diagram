@@ -10,6 +10,7 @@
         <EntityTypeShape EntityType="wwsaModel.suppliers_locations" Width="1.5" PointX="6" PointY="1" />
         <EntityTypeShape EntityType="wwsaModel.tools" Width="1.5" PointX="0.75" PointY="4.75" />
         <AssociationConnector Association="wwsaModel.suppliers_locations_ibfk_1" />
+        <EntityTypeShape EntityType="wwsaModel.members" Width="1.5" PointX="3.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

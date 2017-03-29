@@ -29,5 +29,6 @@ namespace Repository.MySql
         public DbSet<suppliers> suppliers { get; set; }
         public DbSet<suppliers_locations> suppliers_locations { get; set; }
         public DbSet<tools> tools { get; set; }
+        public DbSet<members> members { get; set; }
     }
 }

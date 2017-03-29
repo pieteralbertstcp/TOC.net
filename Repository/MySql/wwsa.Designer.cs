@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\pieter.alberts\documents\visual studio 2013\Projects\WoodWorkingSA\Repository\MySql\wwsa.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\DEV\TOC.net\Repository\MySql\wwsa.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

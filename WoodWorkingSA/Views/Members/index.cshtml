@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/MasterTemplate/AuthentucatedMasterTemplate.cshtml";
+}
+<script type="text/javascript">
+
+
+    function updateMapWithMemeberDetails(memberId) {
+        getPointersData(map, memberId);
+    }
+
+    function getPointersData(map, memberId) {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: '@Url.Action("GetMemberData", "members")',
+            data: { "memberId": memberId },
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if (data != null) {
+                    showMemberDetails(GenerateMemberDetailsTable(data.body.first_name + " " + data.body.last_name, data.body.address, '2016', data.body.email, data.body.cell, ""));
+                    AddMapMarkers(data.body.first_name + " " + data.body.last_name, data.body.lat, data.body.lng, map, "F7A923");
+                    var pt = new google.maps.LatLng(data.body.lng, data.body.lat);
+                    map.setCenter(pt);
+                    map.setZoom(14);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.log(error);
+            }
+        });
+    }
+
+    function GenerateMemberDetailsTable(nameSurname, address, startedWoodworkingAtYear, email, cell, image) {
+        return '<table> <tr> <th style="text-align:center; background-color:green;" colspan="3">' +
+            'Member Details</th> </tr> <tr> <td>Name</td> <td>' + nameSurname + '</td> <td rowspan="5">' +
+            '<img src="' + image + '" style="width:150px;padding:2px; "></td> </tr> <tr> <td>Cell</td>' +
+            ' <td>' + cell + '</td> </tr> <tr> <td>email</td> <td>' + email + '</td> </tr> <tr>' +
+            ' <td>Started doing<br>woodworking in</td> <td>' + startedWoodworkingAtYear + '</td> </tr> <tr> <td>Address</td> ' +
+            '<td>' + address + '</td> </tr> </table>';
+    }
+
+    function showMemberDetails(memberHtmlData) {
+        $('#MemberDetailsDiv').empty();
+        $('#MemberDetailsDiv').html(memberHtmlData);
+    }
+</script>
+<h3>Club Members</h3>
+Please select a member from the below list to view their details.<br><br>
+<select onchange="updateMapWithMemeberDetails($(this).val())">
+    @foreach (var x in ViewBag.Members)
+    {
+        <option value="@x.id">@(x.first_name + " " + x.last_name)</option>
+        <option value="@x.id">@(x.first_name + " " + x.last_name)</option>
+    }
+</select>
+<br><br><div id="MemberDetailsDiv"></div>
+<br><br>
+@Html.Partial("~/Views/Partials/GoogleMap.cshtml") 

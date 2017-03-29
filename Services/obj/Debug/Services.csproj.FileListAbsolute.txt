@@ -13,3 +13,18 @@ C:\Users\pieter.alberts\documents\visual studio 2013\Projects\WoodWorkingSA\Serv
 C:\Users\pieter.alberts\documents\visual studio 2013\Projects\WoodWorkingSA\Services\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\pieter.alberts\documents\visual studio 2013\Projects\WoodWorkingSA\Services\bin\Debug\MySql.Data.dll
 C:\Users\pieter.alberts\documents\visual studio 2013\Projects\WoodWorkingSA\Services\bin\Debug\mysql.data.entity.EF6.dll
+C:\DEV\TOC.net\Services\bin\Debug\Services.dll.config
+C:\DEV\TOC.net\Services\bin\Debug\Services.dll
+C:\DEV\TOC.net\Services\bin\Debug\Services.pdb
+C:\DEV\TOC.net\Services\bin\Debug\EntityFramework.dll
+C:\DEV\TOC.net\Services\bin\Debug\EntityFramework.SqlServer.dll
+C:\DEV\TOC.net\Services\bin\Debug\MySql.Data.dll
+C:\DEV\TOC.net\Services\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\DEV\TOC.net\Services\bin\Debug\Repository.dll
+C:\DEV\TOC.net\Services\bin\Debug\System.Linq.Dynamic.dll
+C:\DEV\TOC.net\Services\bin\Debug\Repository.pdb
+C:\DEV\TOC.net\Services\bin\Debug\EntityFramework.xml
+C:\DEV\TOC.net\Services\bin\Debug\EntityFramework.SqlServer.xml
+C:\DEV\TOC.net\Services\obj\Debug\Services.csprojResolveAssemblyReference.cache
+C:\DEV\TOC.net\Services\obj\Debug\Services.dll
+C:\DEV\TOC.net\Services\obj\Debug\Services.pdb

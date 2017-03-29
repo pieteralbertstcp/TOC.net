@@ -9,6 +9,7 @@
       <End Role="suppliers" EntitySet="suppliers" />
       <End Role="suppliers_locations" EntitySet="suppliers_locations" />
     </AssociationSet>
+    <EntitySet Name="members" EntityType="wwsaModel.members" />
   </EntityContainer>
   <EntityType Name="youtube_recommendations">
     <Key>
@@ -42,7 +43,6 @@
     </Key>
     <Property Name="id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
     <Property Name="supplier_id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="physical_address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="telephone_number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="lng" Type="Single" />
     <Property Name="lat" Type="Single" />
@@ -72,4 +72,24 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="members">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Name="first_name" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="cell" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="id_number" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="date_created" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date_updated" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="profile_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="started_woodworking_on" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="address" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="lng" Type="Single" />
+    <Property Name="lat" Type="Single" />
+  </EntityType>
 </Schema>

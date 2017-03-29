@@ -58,6 +58,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MySql\members.cs">
+      <DependentUpon>wwsa.tt</DependentUpon>
+    </Compile>
     <Compile Include="MySql\QueryParameters.cs" />
     <Compile Include="MySql\suppliers.cs">
       <DependentUpon>wwsa.tt</DependentUpon>

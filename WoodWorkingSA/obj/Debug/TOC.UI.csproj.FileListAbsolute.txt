@@ -39,3 +39,44 @@ C:\Users\pieter.alberts\documents\visual studio 2013\Projects\WoodWorkingSA\Wood
 C:\Users\pieter.alberts\documents\visual studio 2013\Projects\WoodWorkingSA\WoodWorkingSA\obj\Debug\TOC.UI.csprojResolveAssemblyReference.cache
 C:\Users\pieter.alberts\documents\visual studio 2013\Projects\WoodWorkingSA\WoodWorkingSA\obj\Debug\WoodWorkingSA.dll
 C:\Users\pieter.alberts\documents\visual studio 2013\Projects\WoodWorkingSA\WoodWorkingSA\obj\Debug\WoodWorkingSA.pdb
+C:\DEV\TOC.net\WoodWorkingSA\bin\WoodWorkingSA.dll.config
+C:\DEV\TOC.net\WoodWorkingSA\bin\WoodWorkingSA.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\WoodWorkingSA.pdb
+C:\DEV\TOC.net\WoodWorkingSA\bin\Antlr3.Runtime.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\AutoMapper.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\EntityFramework.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\EntityFramework.SqlServer.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\Microsoft.Web.Infrastructure.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\MySql.Data.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\MySql.Data.Entity.EF6.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\Newtonsoft.Json.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\Repository.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\Services.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.Helpers.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.Mvc.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.Optimization.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.Providers.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.Razor.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.WebPages.Deployment.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.WebPages.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.WebPages.Razor.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\WebGrease.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\System.Linq.Dynamic.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\Repository.pdb
+C:\DEV\TOC.net\WoodWorkingSA\bin\Services.pdb
+C:\DEV\TOC.net\WoodWorkingSA\bin\Antlr3.Runtime.pdb
+C:\DEV\TOC.net\WoodWorkingSA\bin\AutoMapper.xml
+C:\DEV\TOC.net\WoodWorkingSA\bin\EntityFramework.xml
+C:\DEV\TOC.net\WoodWorkingSA\bin\EntityFramework.SqlServer.xml
+C:\DEV\TOC.net\WoodWorkingSA\bin\Newtonsoft.Json.xml
+C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.Helpers.xml
+C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.Mvc.xml
+C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.Optimization.xml
+C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.Providers.xml
+C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.Razor.xml
+C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.WebPages.xml
+C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.WebPages.Deployment.xml
+C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.WebPages.Razor.xml
+C:\DEV\TOC.net\WoodWorkingSA\obj\Debug\Toc.UI.csprojResolveAssemblyReference.cache
+C:\DEV\TOC.net\WoodWorkingSA\obj\Debug\WoodWorkingSA.dll
+C:\DEV\TOC.net\WoodWorkingSA\obj\Debug\WoodWorkingSA.pdb
