@@ -2,6 +2,7 @@
 
 <script type="text/javascript">
     var map;
+    var listOfMarkers = [];
     function myMap() {
         var mapCanvas = document.getElementById("map");
         var mapOptions = {
@@ -11,7 +12,20 @@
         }
         map = new google.maps.Map(mapCanvas, mapOptions);
         infowindow = new google.maps.InfoWindow();
-        getPointersData(map);
+        getMarkerData(map);
+    }
+    function showMap() {
+        $("#map").css('visibility', 'visible');
+    }
+
+    function removeAllMarkersFromMap() {
+        for (var i = 0; i < listOfMarkers.length; i++) {
+            listOfMarkers[i].setMap(null);
+        }
+    }
+
+    function hideMap() {
+        $('#map').css('visibility', 'hidden');
     }
 
     function AddMapMarkers(markerDetails, lat, lng, map, markerColors) {
@@ -21,13 +35,13 @@
             map: map,
             icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|' + markerColors
         });
-
-        google.maps.event.addListener(map, 'click', function() {
+        listOfMarkers.push(marker);
+        google.maps.event.addListener(map, 'click', function () {
             infowindow.close();
         });
 
-        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            return function() {
+        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            return function () {
                 infowindow.setContent(markerDetails);
                 infowindow.open(map, marker);
             }

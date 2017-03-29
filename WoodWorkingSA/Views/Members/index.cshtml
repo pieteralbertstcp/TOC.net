@@ -4,12 +4,18 @@
 }
 <script type="text/javascript">
 
-
-    function updateMapWithMemeberDetails(memberId) {
-        getPointersData(map, memberId);
+    function updateMapWithMemberDetails(memberId) {
+        if (memberId != null) {
+            showMap();
+            removeAllMarkersFromMap();
+            getMemberData(memberId);
+        }
     }
+    function getMarkerData() {
+        hideMap();
+    };
 
-    function getPointersData(map, memberId) {
+    function getMemberData(memberId) {
         $.ajax({
             type: "GET",
             dataType: "json",
@@ -32,11 +38,11 @@
     }
 
     function GenerateMemberDetailsTable(nameSurname, address, startedWoodworkingAtYear, email, cell, image) {
-        return '<table> <tr> <th style="text-align:center; background-color:green;" colspan="3">' +
-            'Member Details</th> </tr> <tr> <td>Name</td> <td>' + nameSurname + '</td> <td rowspan="5">' +
-            '<img src="' + image + '" style="width:150px;padding:2px; "></td> </tr> <tr> <td>Cell</td>' +
-            ' <td>' + cell + '</td> </tr> <tr> <td>email</td> <td>' + email + '</td> </tr> <tr>' +
-            ' <td>Started doing<br>woodworking in</td> <td>' + startedWoodworkingAtYear + '</td> </tr> <tr> <td>Address</td> ' +
+        return '<style>table, th, td {border: 1px solid black; padding: 5px;}</style><table width="100%"> <tr> <th style="background-color:#F7A923; font-weight: bold;text-align:center;" colspan="3">' +
+            'Member Details</th> </tr> <tr> <td style=" font-weight: bold;">Name</td> <td>' + nameSurname + '</td> <td rowspan="5">' +
+            '<img src="' + image + '" style="width:150px;padding:2px; "></td> </tr> <tr> <td style=" font-weight: bold;">Cell</td>' +
+            ' <td>' + cell + '</td> </tr> <tr> <td style=" font-weight: bold;">email</td> <td>' + email + '</td> </tr> <tr>' +
+            ' <td style=" font-weight: bold;">Started doing<br>woodworking</td> <td>' + startedWoodworkingAtYear + '</td> </tr> <tr> <td style=" font-weight: bold;">Address</td> ' +
             '<td>' + address + '</td> </tr> </table>';
     }
 
@@ -47,7 +53,7 @@
 </script>
 <h3>Club Members</h3>
 Please select a member from the below list to view their details.<br><br>
-<select onchange="updateMapWithMemeberDetails($(this).val())">
+<select onchange="updateMapWithMemberDetails($(this).val())">
     @foreach (var x in ViewBag.Members)
     {
         <option value="@x.id">@(x.first_name + " " + x.last_name)</option>
@@ -55,5 +61,5 @@ Please select a member from the below list to view their details.<br><br>
     }
 </select>
 <br><br><div id="MemberDetailsDiv"></div>
-<br><br>
+<br>
 @Html.Partial("~/Views/Partials/GoogleMap.cshtml") 
