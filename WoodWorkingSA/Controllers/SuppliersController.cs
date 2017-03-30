@@ -13,7 +13,7 @@ namespace WoodWorkingSA.Controllers
         // GET: Suppliers
         public ActionResult Index()
         {
-            ViewBag.suppliers = new SuppliersService().GetAll().ToList();
+            ViewBag.suppliers = new SuppliersService().GetAll().OrderBy(x => x.supplier_name).ToList();
             ViewBag.youtube = new YoutubeRecommendationsService().GetAll().ToList();
             return View();
         }
@@ -21,7 +21,7 @@ namespace WoodWorkingSA.Controllers
         private static string GeneratePopupWindowText(suppliers supplier,string telephone)
         {
             return "<center><table>" +
-                   "<tr><td><img style='width:200px;height:auto;' src=" + supplier.image_url + "></td></tr> <tr><td><br /></td></tr>" +
+                   "<tr><td><img style='width:150px;height:auto;' src=" + supplier.image_url + "></td></tr> <tr><td><br /></td></tr>" +
                    "<tr><td style='width:20px; word-wrap: break-word; '>" + supplier.description + "</td></tr> <tr><td><br /></td></tr>" +
                    "<tr><td><a target='_blank' href='" + supplier.url + "/'>" + supplier.url + "</td></tr></table></center> <tr><td><br /></td></tr>" +
                    "<tr><td style='width:20px;  word-wrap: break-word; '><center><b>" + telephone + "</b></center></td></tr>";
@@ -33,7 +33,7 @@ namespace WoodWorkingSA.Controllers
             var points = new List<dynamic>();
             using (var service = new SuppliersService())
             {
-                foreach (var sl in service.GetAll())
+                foreach (var sl in service.GetAll().OrderBy(x=>x.supplier_name))
                 {
                     using (var service2 = new SuppliersLocationsService())
                     {

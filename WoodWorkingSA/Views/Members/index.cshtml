@@ -24,11 +24,13 @@
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data != null) {
-                    showMemberDetails(GenerateMemberDetailsTable(data.body.first_name + " " + data.body.last_name, data.body.address, '2016', data.body.email, data.body.cell, ""));
-                    AddMapMarkers(data.body.first_name + " " + data.body.last_name, data.body.lat, data.body.lng, map, "F7A923");
-                    var pt = new google.maps.LatLng(data.body.lng, data.body.lat);
+                    var json = JSON.parse(data.body);
+                    showMemberDetails(GenerateMemberDetailsTable(json.first_name + " " + json.last_name, json.address, json.started_woodworking_on_year, json.email, json.cell));
+                    document.getElementById("memberPreview").src = "data:image/png;base64," + json.profile_image_base_64;
+                    AddMapMarkers(json.first_name + " " + json.last_name, json.lat, json.lng, map, "669900");
+                    var pt = new google.maps.LatLng(json.lng, json.lat);
                     map.setCenter(pt);
-                    map.setZoom(14);
+                    map.setZoom(12);
                 }
             },
             error: function (xhr, status, error) {
@@ -37,12 +39,12 @@
         });
     }
 
-    function GenerateMemberDetailsTable(nameSurname, address, startedWoodworkingAtYear, email, cell, image) {
-        return '<style>table, th, td {border: 1px solid black; padding: 5px;}</style><table width="100%"> <tr> <th style="background-color:#F7A923; font-weight: bold;text-align:center;" colspan="3">' +
-            'Member Details</th> </tr> <tr> <td style=" font-weight: bold;">Name</td> <td>' + nameSurname + '</td> <td rowspan="5">' +
-            '<img src="' + image + '" style="width:150px;padding:2px; "></td> </tr> <tr> <td style=" font-weight: bold;">Cell</td>' +
-            ' <td>' + cell + '</td> </tr> <tr> <td style=" font-weight: bold;">email</td> <td>' + email + '</td> </tr> <tr>' +
-            ' <td style=" font-weight: bold;">Started doing<br>woodworking</td> <td>' + startedWoodworkingAtYear + '</td> </tr> <tr> <td style=" font-weight: bold;">Address</td> ' +
+    function GenerateMemberDetailsTable(nameSurname, address, startedWoodworkingAtYear, email, cell) {
+        return '<style>table, th, td {border: 1px solid black; padding: 5px;}</style><table width="100%"> <tr> <th style="background-color:#669900; color:black; font-weight: bold;text-align:center;" colspan="3">' +
+            'Member Details</th> </tr> <tr> <td style=" width:200px; color:black;font-weight: bold;">Name and Surname</td> <td>' + nameSurname + '</td> <td style="width:120px; padding-left:15px;" rowspan="5">' +
+            '<center><img border="1" id="memberPreview" src="" style=" color:black;width:100px;padding:2px; "></center></td> </tr> <tr> <td style=" color:black; font-weight: bold;">Cell</td>' +
+            ' <td>' + cell + '</td> </tr> <tr> <td style="  color:black;font-weight: bold;">Email Address</td> <td>' + email + '</td> </tr> <tr>' +
+            ' <td style="  color:black;font-weight: bold;">Started doing<br>woodworking</td> <td>' + startedWoodworkingAtYear + '</td> </tr> <tr> <td style=" color:black; font-weight: bold;">Address</td> ' +
             '<td>' + address + '</td> </tr> </table>';
     }
 
@@ -56,7 +58,6 @@ Please select a member from the below list to view their details.<br><br>
 <select onchange="updateMapWithMemberDetails($(this).val())">
     @foreach (var x in ViewBag.Members)
     {
-        <option value="@x.id">@(x.first_name + " " + x.last_name)</option>
         <option value="@x.id">@(x.first_name + " " + x.last_name)</option>
     }
 </select>
