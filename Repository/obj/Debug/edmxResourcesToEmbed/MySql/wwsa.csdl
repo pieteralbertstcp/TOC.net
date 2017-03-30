@@ -10,6 +10,12 @@
       <End Role="suppliers_locations" EntitySet="suppliers_locations" />
     </AssociationSet>
     <EntitySet Name="members" EntityType="wwsaModel.members" />
+    <EntitySet Name="document_categories" EntityType="wwsaModel.document_categories" />
+    <EntitySet Name="documents" EntityType="wwsaModel.documents" />
+    <AssociationSet Name="document_categories_id_ibfk_1" Association="wwsaModel.document_categories_id_ibfk_1">
+      <End Role="document_categories" EntitySet="document_categories" />
+      <End Role="documents" EntitySet="documents" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="youtube_recommendations">
     <Key>
@@ -92,4 +98,38 @@
     <Property Name="lng" Type="Single" />
     <Property Name="lat" Type="Single" />
   </EntityType>
+  <EntityType Name="document_categories">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Name="category_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="date_created" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date_updated" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="documents" Relationship="wwsaModel.document_categories_id_ibfk_1" FromRole="document_categories" ToRole="documents" />
+  </EntityType>
+  <EntityType Name="documents">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Name="filename" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="document" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="date_created" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date_updated" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="document_categories_id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="document_categories" Relationship="wwsaModel.document_categories_id_ibfk_1" FromRole="documents" ToRole="document_categories" />
+  </EntityType>
+  <Association Name="document_categories_id_ibfk_1">
+    <End Type="wwsaModel.document_categories" Role="document_categories" Multiplicity="1" />
+    <End Type="wwsaModel.documents" Role="documents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="document_categories">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="documents">
+        <PropertyRef Name="document_categories_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

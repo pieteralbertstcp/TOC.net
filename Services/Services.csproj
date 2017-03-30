@@ -60,7 +60,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MySql\DocumentsService.cs" />
     <Compile Include="MySql\SuppliersLocationsService.cs" />
+    <Compile Include="MySql\DocumentCategoriesService .cs" />
     <Compile Include="MySql\SuppliersService.cs" />
     <Compile Include="MySql\MembersService.cs" />
     <Compile Include="MySql\ToolsService.cs" />

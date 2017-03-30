@@ -11,6 +11,9 @@
         <EntityTypeShape EntityType="wwsaModel.tools" Width="1.5" PointX="0.75" PointY="4.75" />
         <AssociationConnector Association="wwsaModel.suppliers_locations_ibfk_1" />
         <EntityTypeShape EntityType="wwsaModel.members" Width="1.5" PointX="3.375" PointY="4.75" />
+        <EntityTypeShape EntityType="wwsaModel.document_categories" Width="1.5" PointX="5.375" PointY="5.125" />
+        <EntityTypeShape EntityType="wwsaModel.documents" Width="1.5" PointX="7.625" PointY="5" />
+        <AssociationConnector Association="wwsaModel.document_categories_id_ibfk_1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

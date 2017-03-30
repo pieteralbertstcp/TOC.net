@@ -73,5 +73,27 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="document_categories">
+      <EntityTypeMapping TypeName="wwsaModel.document_categories">
+        <MappingFragment StoreEntitySet="document_categories">
+          <ScalarProperty Name="date_updated" ColumnName="date_updated" />
+          <ScalarProperty Name="date_created" ColumnName="date_created" />
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="documents">
+      <EntityTypeMapping TypeName="wwsaModel.documents">
+        <MappingFragment StoreEntitySet="documents">
+          <ScalarProperty Name="document_categories_id" ColumnName="document_categories_id" />
+          <ScalarProperty Name="date_updated" ColumnName="date_updated" />
+          <ScalarProperty Name="date_created" ColumnName="date_created" />
+          <ScalarProperty Name="document" ColumnName="document" />
+          <ScalarProperty Name="filename" ColumnName="filename" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

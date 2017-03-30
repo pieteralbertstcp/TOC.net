@@ -19,6 +19,5 @@ C:\DEV\TOC.net\Repository\bin\Debug\MySql.Data.dll
 C:\DEV\TOC.net\Repository\bin\Debug\MySql.Data.Entity.EF6.dll
 C:\DEV\TOC.net\Repository\bin\Debug\EntityFramework.xml
 C:\DEV\TOC.net\Repository\bin\Debug\EntityFramework.SqlServer.xml
-C:\DEV\TOC.net\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
 C:\DEV\TOC.net\Repository\obj\Debug\Repository.dll
 C:\DEV\TOC.net\Repository\obj\Debug\Repository.pdb

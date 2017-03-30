@@ -58,6 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MySql\documents.cs">
+      <DependentUpon>wwsa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MySql\document_categories.cs">
+      <DependentUpon>wwsa.tt</DependentUpon>
+    </Compile>
     <Compile Include="MySql\members.cs">
       <DependentUpon>wwsa.tt</DependentUpon>
     </Compile>
