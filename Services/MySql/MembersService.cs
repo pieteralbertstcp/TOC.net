@@ -1,4 +1,6 @@
-﻿using System.Security.Cryptography;
+﻿using System.Dynamic;
+using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using Repository.MySql;
 
@@ -6,12 +8,11 @@ namespace Services.MySql
 {
     public class MembersService : wwsaService<members>
     {
-        public bool IsValidMember(string username, string password)
+        public dynamic IsValidMember(string username, string password)
         {
             if (username == null || password == null) return false;
             var hashPassword = GenerateMd5Hash(password);
-            var result = Where(x => x.username == username && x.password == hashPassword);
-            return result != null;
+            return Where(x => x.username == username && x.password == hashPassword && x.is_active.Value).FirstOrDefault();
         }
 
         private static string GenerateMd5Hash(string input)
@@ -25,5 +26,17 @@ namespace Services.MySql
             }
             return sb.ToString();
         }
+
+	    public dynamic GetUsernameBasicInfo(string username)
+	    {
+			var user = Where(x => x.username == username.Trim()).FirstOrDefault();
+			dynamic result = new ExpandoObject();
+		    if (user == null) return null;
+		    result.username = user.username;
+		    result.firstname = user.first_name;
+		    result.lastname = user.last_name;
+		    result.id = user.id;
+			return result;
+	    }
     }
 }

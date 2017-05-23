@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Dynamic;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
-using Repository.MySql;
 using Services.MySql;
 
 namespace WoodWorkingSA.Controllers
 {
+	[Authorize]
     public class membersController : Controller
     {
 

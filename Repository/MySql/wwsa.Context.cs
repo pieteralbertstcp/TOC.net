@@ -32,5 +32,7 @@ namespace Repository.MySql
         public DbSet<members> members { get; set; }
         public DbSet<document_categories> document_categories { get; set; }
         public DbSet<documents> documents { get; set; }
+        public DbSet<meeting_rsvp> meeting_rsvp { get; set; }
+        public DbSet<meetings> meetings { get; set; }
     }
 }

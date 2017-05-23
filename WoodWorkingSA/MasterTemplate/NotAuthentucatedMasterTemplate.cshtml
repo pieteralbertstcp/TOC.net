@@ -1,18 +1,18 @@
 ﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
 <head>
+    @Html.Raw(File.ReadAllText(Server.MapPath("~/Views/Partials/Loader.html")))
     <title>TRITON OWNERS CLUB</title>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <link rel="shortcut icon" href="css/images/favicon.ico" />
-    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <link rel="shortcut icon" href="css/images/favicon.ico"/>
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all"/>
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
     <script src="js/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/jquery.flexslider.js" type="text/javascript"></script>
     <script src="js/jquery.jcarousel.js" type="text/javascript"></script>
     <script src="js/functions.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
-
     <div class="shell">
         <div id="wrapper-middle">
             <div id="header">
@@ -25,7 +25,7 @@
                 <div id="navigation">
                     <ul>
                         <li><a href="" title="login">REGISTER</a></li>
-                        <li class="lastr"><a href="" title="login">MEMBERS LOGIN HERE</a></li>
+                        <li class="lastr"><a id="ModalBtn" title="login">MEMBERS LOGIN HERE</a></li>
                     </ul>
                 </div>
             </div>

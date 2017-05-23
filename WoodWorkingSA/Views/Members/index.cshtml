@@ -27,10 +27,11 @@
                     var json = JSON.parse(data.body);
                     showMemberDetails(GenerateMemberDetailsTable(json.first_name + " " + json.last_name, json.address, json.started_woodworking_on_year, json.email, json.cell));
                     document.getElementById("memberPreview").src = "data:image/png;base64," + json.profile_image_base_64;
-                    AddMapMarkers(json.first_name + " " + json.last_name, json.lat, json.lng, map, "669900");
+                    AddMapMarkers(json.first_name + " " + json.last_name, json.lat, json.lng, map, "FAA635");
                     var pt = new google.maps.LatLng(json.lng, json.lat);
                     map.setCenter(pt);
                     map.setZoom(12);
+                    console.log(json.profile_image_base_64);
                 }
             },
             error: function (xhr, status, error) {
@@ -40,7 +41,7 @@
     }
 
     function GenerateMemberDetailsTable(nameSurname, address, startedWoodworkingAtYear, email, cell) {
-        return '<style>table, th, td {border: 1px solid black; padding: 5px;}</style><table width="100%"> <tr> <th style="background-color:#669900; color:black; font-weight: bold;text-align:center;" colspan="3">' +
+        return '<style>table, th, td {border: 1px solid black; padding: 5px;}</style><table width="100%"> <tr> <th style="background-color:#FAA635; color:black; font-weight: bold;text-align:center;" colspan="3">' +
             'Member Details</th> </tr> <tr> <td style=" width:200px; color:black;font-weight: bold;">Name and Surname</td> <td>' + nameSurname + '</td> <td style="width:120px; padding-left:15px;" rowspan="5">' +
             '<center><img border="1" id="memberPreview" src="" style=" color:black;width:100px;padding:2px; "></center></td> </tr> <tr> <td style=" color:black; font-weight: bold;">Cell</td>' +
             ' <td>' + cell + '</td> </tr> <tr> <td style="  color:black;font-weight: bold;">Email Address</td> <td>' + email + '</td> </tr> <tr>' +
@@ -55,7 +56,7 @@
 </script>
 <h3>Club Members</h3>
 Please select a member from the below list to view their details.<br><br>
-<select onchange="updateMapWithMemberDetails($(this).val())">
+<select onchange="updateMapWithMemberDetails($(this).val())" style="width: 250px;">
     @foreach (var x in ViewBag.Members)
     {
         <option value="@x.id">@(x.first_name + " " + x.last_name)</option>

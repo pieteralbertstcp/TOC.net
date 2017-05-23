@@ -14,7 +14,11 @@
         <EntityTypeShape EntityType="wwsaModel.document_categories" Width="1.5" PointX="5.375" PointY="5.125" />
         <EntityTypeShape EntityType="wwsaModel.documents" Width="1.5" PointX="7.625" PointY="5" />
         <AssociationConnector Association="wwsaModel.document_categories_id_ibfk_1" />
-      </Diagram>
+        <EntityTypeShape EntityType="wwsaModel.meeting_rsvp" Width="1.5" PointX="5.625" PointY="8.75" />
+        <EntityTypeShape EntityType="wwsaModel.meetings" Width="1.5" PointX="3.375" PointY="10.25" />
+        <AssociationConnector Association="wwsaModel.meeting_id_ibfk_1" />
+        <AssociationConnector Association="wwsaModel.member_id_ibfk_1" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

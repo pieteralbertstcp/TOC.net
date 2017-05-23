@@ -1,11 +1,12 @@
 ﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
 <head>
-    <title>WOODWORKING SA</title>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <link rel="shortcut icon" href="css/images/favicon.ico" />
-    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    @Html.Raw(File.ReadAllText(Server.MapPath("~/Views/Partials/Loader.html")))
+    <title>TRITON OWNERS CLUB</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <link rel="shortcut icon" href="css/images/favicon.ico"/>
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all"/>
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
     <!--[if IE 6]>
         <script src="js/DD_belatedPNG_0.0.8a-min.js" type="text/javascript"></script>
     <![endif]-->
@@ -33,6 +34,7 @@
                         <li><a href="Suppliers" title="suppliers">Suppliers</a></li>
                         <li><a href="for_sale" title="suppliers">for Sale</a></li>
                         <li><a href="Members" title="suppliers">members</a></li>
+                        <li><a href="Welcome" title="suppliers">Welcome</a></li>
                         <li class="lastr"><a href="Documents" title="Contacts">Documents</a></li>
                     </ul>
                 </div>
@@ -42,11 +44,8 @@
                 <br />
                 <!-- Content -->
                 <div id="content">
-                    <div class="post">
 
-                        <div class="cl">&nbsp;</div>
                         @RenderBody()
-                    </div>
                 </div>
 
                 <div class="cl">&nbsp;</div>

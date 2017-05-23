@@ -52,7 +52,10 @@ C:\DEV\TOC.net\WoodWorkingSA\bin\MySql.Data.Entity.EF6.dll
 C:\DEV\TOC.net\WoodWorkingSA\bin\Newtonsoft.Json.dll
 C:\DEV\TOC.net\WoodWorkingSA\bin\Repository.dll
 C:\DEV\TOC.net\WoodWorkingSA\bin\Services.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\System.Net.Http.Formatting.dll
 C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.Helpers.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.Http.dll
+C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.Http.WebHost.dll
 C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.Mvc.dll
 C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.Optimization.dll
 C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.Providers.dll
@@ -77,6 +80,9 @@ C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.Razor.xml
 C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.WebPages.xml
 C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.WebPages.Deployment.xml
 C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.WebPages.Razor.xml
+C:\DEV\TOC.net\WoodWorkingSA\bin\System.Net.Http.Formatting.xml
+C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.Http.xml
+C:\DEV\TOC.net\WoodWorkingSA\bin\System.Web.Http.WebHost.xml
 C:\DEV\TOC.net\WoodWorkingSA\obj\Debug\Toc.UI.csprojResolveAssemblyReference.cache
 C:\DEV\TOC.net\WoodWorkingSA\obj\Debug\WoodWorkingSA.dll
 C:\DEV\TOC.net\WoodWorkingSA\obj\Debug\WoodWorkingSA.pdb

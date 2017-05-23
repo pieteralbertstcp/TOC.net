@@ -8,7 +8,7 @@
         <div class="post">
             <h3>Why you should join our club</h3>
             <div class="cl">&nbsp;</div>
-            <img src="css/images/triton_sander.jpg" height="120px;"  />
+            <img src="css/images/triton_sander.jpg" height="120px;" />
             <p>
                 <br /><br />
                 We are a group of likeminded people interested in woodworking as a hobby and we meet once a month on a Saturday afternoon.
@@ -20,7 +20,7 @@
                 <ul>
                     <li>Guest speakers showing us products and doing demonstrations.</li>
                     <li>Practical sessions on improving our skills with a large selection of power tools that are at the meeting venue for our use.</li>
-                    <li>“Show and Tell where members bring items they have made and share their experience with the club.”</li>
+                    <li>Show and Tell where members bring items they have made and share their experience with the club.</li>
                     <li>Internal competitions where members get to improve their skills and learn from the advice of the judges.</li>
                     <li>Prizes and handouts at most meetings.</li>
                     <li>Access to a free library of books magazines and Cd’s loaded with information.</li>
@@ -34,9 +34,9 @@
                 </p>
                 <br /><br /><br />
                 <p>
-                    <img src="css/images/triton_register.png" height="100px;"/>
+                    <img src="css/images/triton_register.png" height="100px;" />
                 </p>
-               <br /><br /><br /><br /><br />
+                <br /><br /><br /><br /><br />
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
     <div id="project">
         <h3></h3>
         <p>
-            <strong>Recommended Youtube Channels</strong><br/>A list of recommended youtube channels, everything from simple shop jigs to full on expert level projects.<br/>
+            <strong>Recommended Youtube Channels</strong><br />A list of recommended youtube channels, everything from simple shop jigs to full on expert level projects.<br />
         </p>
         <div id="project-slider">
             <ul>
@@ -64,4 +64,74 @@
         <div class="cl">&nbsp;</div>
     </div>
 </div>
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+        </div>
+        <div class="modal-body">
+            <br /><center>
+                <form method="post" action="@Url.Action("LoginResult", "Home")">
+                    <table style="width: 250px; margin-left: auto; margin-right: auto; text-align: center;" id="loginTable">
+                        <tr>
+                            <td>
+                                <h4>Username</h4>
+                            </td>
+                            <td>
+                                <input type="text" name="username">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h4>Password</h4>
+                            </td>
+                            <td>
+                                <input id="PasswordInput" type="password" name="password">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="LoginButton" class="button" name="Submit" type="submit" value="Login" />
+                            </td>
+                            <td>
+                                <div id="ErrorMessage"></div>
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+
+                    <br />
+                    <center />
+                </form>
+            </center>
+        </div>
+
+    </div>
+</div>
+@Html.Raw(File.ReadAllText(Server.MapPath("~/Views/Partials/BootstapModal.html")));
+@if (ViewBag.Message != null)
+{
+    <script>
+        var table = document.getElementById("loginTable");
+        $("#ErrorMessage").html("<u>" + "@ViewBag.Message" + "</u>");
+        modal.style.display = "block";
+    </script>
+}
+<script>
+    $("#PasswordInput").keyup(function (event) {
+        if (event.keyCode == 13) {
+            $("#LoginButton").click();
+        }
+    });
+
+    if (window.location.href.indexOf("viewlogin") > 0) {
+        modal.style.display = "block";
+    }
+</script>
 

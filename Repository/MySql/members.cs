@@ -14,6 +14,11 @@ namespace Repository.MySql
     
     public partial class members
     {
+        public members()
+        {
+            this.meeting_rsvp = new HashSet<meeting_rsvp>();
+        }
+    
         public string id { get; set; }
         public string first_name { get; set; }
         public string last_name { get; set; }
@@ -29,5 +34,9 @@ namespace Repository.MySql
         public string address { get; set; }
         public Nullable<float> lng { get; set; }
         public Nullable<float> lat { get; set; }
+        public Nullable<bool> is_active { get; set; }
+        public Nullable<bool> is_admin { get; set; }
+    
+        public virtual ICollection<meeting_rsvp> meeting_rsvp { get; set; }
     }
 }

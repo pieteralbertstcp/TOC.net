@@ -25,6 +25,23 @@
           <Property Name="date_updated" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="document_categories_id" Type="varchar" MaxLength="36" Nullable="false" />
         </EntityType>
+        <EntityType Name="meeting_rsvp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="member_id" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="meeting_id" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="is_attending" Type="bit" />
+          <Property Name="is_bringing_friend" Type="bit" />
+        </EntityType>
+        <EntityType Name="meetings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="meeting_date" Type="timestamp" Precision="0" />
+        </EntityType>
         <EntityType Name="members">
           <Key>
             <PropertyRef Name="id" />
@@ -44,6 +61,8 @@
           <Property Name="address" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="lng" Type="float" />
           <Property Name="lat" Type="float" />
+          <Property Name="is_active" Type="bit" />
+          <Property Name="is_admin" Type="bit" />
         </EntityType>
         <EntityType Name="suppliers">
           <Key>
@@ -104,6 +123,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="meeting_id_ibfk_1">
+          <End Role="meetings" Type="Self.meetings" Multiplicity="1" />
+          <End Role="meeting_rsvp" Type="Self.meeting_rsvp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="meetings">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="meeting_rsvp">
+              <PropertyRef Name="meeting_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="member_id_ibfk_1">
+          <End Role="members" Type="Self.members" Multiplicity="1" />
+          <End Role="meeting_rsvp" Type="Self.meeting_rsvp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="members">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="meeting_rsvp">
+              <PropertyRef Name="member_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="suppliers_locations_ibfk_1">
           <End Role="suppliers" Type="Self.suppliers" Multiplicity="0..1" />
           <End Role="suppliers_locations" Type="Self.suppliers_locations" Multiplicity="*" />
@@ -119,6 +162,8 @@
         <EntityContainer Name="wwsaModelStoreContainer">
           <EntitySet Name="document_categories" EntityType="Self.document_categories" Schema="wwsa" store:Type="Tables" />
           <EntitySet Name="documents" EntityType="Self.documents" Schema="wwsa" store:Type="Tables" />
+          <EntitySet Name="meeting_rsvp" EntityType="Self.meeting_rsvp" Schema="wwsa" store:Type="Tables" />
+          <EntitySet Name="meetings" EntityType="Self.meetings" Schema="wwsa" store:Type="Tables" />
           <EntitySet Name="members" EntityType="Self.members" Schema="wwsa" store:Type="Tables" />
           <EntitySet Name="suppliers" EntityType="Self.suppliers" Schema="wwsa" store:Type="Tables" />
           <EntitySet Name="suppliers_locations" EntityType="Self.suppliers_locations" Schema="wwsa" store:Type="Tables" />
@@ -127,6 +172,14 @@
           <AssociationSet Name="document_categories_id_ibfk_1" Association="Self.document_categories_id_ibfk_1">
             <End Role="document_categories" EntitySet="document_categories" />
             <End Role="documents" EntitySet="documents" />
+          </AssociationSet>
+          <AssociationSet Name="meeting_id_ibfk_1" Association="Self.meeting_id_ibfk_1">
+            <End Role="meetings" EntitySet="meetings" />
+            <End Role="meeting_rsvp" EntitySet="meeting_rsvp" />
+          </AssociationSet>
+          <AssociationSet Name="member_id_ibfk_1" Association="Self.member_id_ibfk_1">
+            <End Role="members" EntitySet="members" />
+            <End Role="meeting_rsvp" EntitySet="meeting_rsvp" />
           </AssociationSet>
           <AssociationSet Name="suppliers_locations_ibfk_1" Association="Self.suppliers_locations_ibfk_1">
             <End Role="suppliers" EntitySet="suppliers" />
@@ -153,7 +206,17 @@
             <End Role="document_categories" EntitySet="document_categories" />
             <End Role="documents" EntitySet="documents" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="meeting_rsvp" EntityType="wwsaModel.meeting_rsvp" />
+          <EntitySet Name="meetings" EntityType="wwsaModel.meetings" />
+          <AssociationSet Name="meeting_id_ibfk_1" Association="wwsaModel.meeting_id_ibfk_1">
+            <End Role="meetings" EntitySet="meetings" />
+            <End Role="meeting_rsvp" EntitySet="meeting_rsvp" />
+          </AssociationSet>
+          <AssociationSet Name="member_id_ibfk_1" Association="wwsaModel.member_id_ibfk_1">
+            <End Role="members" EntitySet="members" />
+            <End Role="meeting_rsvp" EntitySet="meeting_rsvp" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="youtube_recommendations">
           <Key>
             <PropertyRef Name="id" />
@@ -234,6 +297,9 @@
           <Property Name="address" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="lng" Type="Single" />
           <Property Name="lat" Type="Single" />
+          <Property Name="is_active" Type="Boolean" />
+          <Property Name="is_admin" Type="Boolean" />
+          <NavigationProperty Name="meeting_rsvp" Relationship="wwsaModel.member_id_ibfk_1" FromRole="members" ToRole="meeting_rsvp" />
         </EntityType>
         <EntityType Name="document_categories">
           <Key>
@@ -269,7 +335,51 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="meeting_rsvp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="member_id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="meeting_id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="is_attending" Type="Boolean" />
+          <Property Name="is_bringing_friend" Type="Boolean" />
+          <NavigationProperty Name="meetings" Relationship="wwsaModel.meeting_id_ibfk_1" FromRole="meeting_rsvp" ToRole="meetings" />
+          <NavigationProperty Name="members" Relationship="wwsaModel.member_id_ibfk_1" FromRole="meeting_rsvp" ToRole="members" />
+        </EntityType>
+        <EntityType Name="meetings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="meeting_date" Type="DateTime" />
+          <NavigationProperty Name="meeting_rsvp" Relationship="wwsaModel.meeting_id_ibfk_1" FromRole="meetings" ToRole="meeting_rsvp" />
+        </EntityType>
+        <Association Name="meeting_id_ibfk_1">
+          <End Type="wwsaModel.meetings" Role="meetings" Multiplicity="1" />
+          <End Type="wwsaModel.meeting_rsvp" Role="meeting_rsvp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="meetings">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="meeting_rsvp">
+              <PropertyRef Name="meeting_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="member_id_ibfk_1">
+          <End Type="wwsaModel.members" Role="members" Multiplicity="1" />
+          <End Type="wwsaModel.meeting_rsvp" Role="meeting_rsvp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="members">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="meeting_rsvp">
+              <PropertyRef Name="member_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -329,6 +439,8 @@
           <EntitySetMapping Name="members">
             <EntityTypeMapping TypeName="wwsaModel.members">
               <MappingFragment StoreEntitySet="members">
+                <ScalarProperty Name="is_admin" ColumnName="is_admin" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
                 <ScalarProperty Name="lat" ColumnName="lat" />
                 <ScalarProperty Name="lng" ColumnName="lng" />
                 <ScalarProperty Name="address" ColumnName="address" />
@@ -365,6 +477,25 @@
                 <ScalarProperty Name="date_created" ColumnName="date_created" />
                 <ScalarProperty Name="document" ColumnName="document" />
                 <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="meeting_rsvp">
+            <EntityTypeMapping TypeName="wwsaModel.meeting_rsvp">
+              <MappingFragment StoreEntitySet="meeting_rsvp">
+                <ScalarProperty Name="is_bringing_friend" ColumnName="is_bringing_friend" />
+                <ScalarProperty Name="is_attending" ColumnName="is_attending" />
+                <ScalarProperty Name="meeting_id" ColumnName="meeting_id" />
+                <ScalarProperty Name="member_id" ColumnName="member_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="meetings">
+            <EntityTypeMapping TypeName="wwsaModel.meetings">
+              <MappingFragment StoreEntitySet="meetings">
+                <ScalarProperty Name="meeting_date" ColumnName="meeting_date" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

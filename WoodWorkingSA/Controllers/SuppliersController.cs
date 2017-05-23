@@ -8,6 +8,7 @@ using Services.MySql;
 
 namespace WoodWorkingSA.Controllers
 {
+	[Authorize]
     public class SuppliersController : Controller
     {
         // GET: Suppliers

@@ -55,6 +55,8 @@
     <EntitySetMapping Name="members">
       <EntityTypeMapping TypeName="wwsaModel.members">
         <MappingFragment StoreEntitySet="members">
+          <ScalarProperty Name="is_admin" ColumnName="is_admin" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
           <ScalarProperty Name="lat" ColumnName="lat" />
           <ScalarProperty Name="lng" ColumnName="lng" />
           <ScalarProperty Name="address" ColumnName="address" />
@@ -91,6 +93,25 @@
           <ScalarProperty Name="date_created" ColumnName="date_created" />
           <ScalarProperty Name="document" ColumnName="document" />
           <ScalarProperty Name="filename" ColumnName="filename" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="meeting_rsvp">
+      <EntityTypeMapping TypeName="wwsaModel.meeting_rsvp">
+        <MappingFragment StoreEntitySet="meeting_rsvp">
+          <ScalarProperty Name="is_bringing_friend" ColumnName="is_bringing_friend" />
+          <ScalarProperty Name="is_attending" ColumnName="is_attending" />
+          <ScalarProperty Name="meeting_id" ColumnName="meeting_id" />
+          <ScalarProperty Name="member_id" ColumnName="member_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="meetings">
+      <EntityTypeMapping TypeName="wwsaModel.meetings">
+        <MappingFragment StoreEntitySet="meetings">
+          <ScalarProperty Name="meeting_date" ColumnName="meeting_date" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

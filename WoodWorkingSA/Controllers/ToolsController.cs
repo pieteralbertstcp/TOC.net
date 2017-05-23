@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace WoodWorkingSA.Controllers
 {
+	[Authorize]
     public class ToolsController : Controller
     {
         // GET: Tools
