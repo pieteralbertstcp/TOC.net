@@ -1,0 +1,95 @@
+﻿@{
+    Layout = "~/MasterTemplate/AuthentucatedMasterTemplate.cshtml";
+}
+<div id="main">
+    <br />
+    @if (ViewBag.firstName != null)
+    {
+        <h3>Welcome Back @ViewBag.firstName,</h3>
+    }
+    else
+    {
+        <h3>Welcome Back</h3>
+    }
+
+    @if (ViewBag.CountOfAtendees != null && ViewBag.CountOfAtendees > 0)
+    {
+        <br />
+        <div>
+            Please take note that our next meeting will be on <u><b>@ViewBag.NextMeetingDate</b></u> and we
+            currently have a total of <b>@ViewBag.CountOfAtendees</b> confirmed attendees.
+        </div>
+    }
+    else
+    {
+        <div>
+            Please take note that our next meeting will be on saturday the <u><b>@ViewBag.NextMeetingDate</b></u>.
+        </div>
+    }
+
+    @if (ViewBag.HasRSVPed == false)
+    {
+        <form method="post" action="@Url.Action("Rsvp", "Welcome")">
+            <br />
+            <table style="width: 600px;">
+                <tr>
+                    <td>
+                        <strong>If you will be attending our next meeting, kindly complete the below:</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input name="isAttending" value="true" type="checkbox">&nbsp;I be attending.</td>
+                </tr>
+                <tr>
+                    <td><input name="isBringingAFriend" value="true" type="checkbox">&nbsp;I will be bringing a friend.</td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+            </table>
+            <input id="RSVPButton" class="button" name="Submit" type="submit" value="Submit" />
+        </form>
+        <br />
+        <br />
+        <br />
+    }
+    else
+    {
+        <br />
+        <strong>Thank you we see you have already confirmed, we will see you soon !</strong>
+        <br />
+        <br />
+        <br />
+        <br />
+    }
+
+    <h3>Meeting Location</h3>
+    <p>We meet at 14:00 at the Young Training Centre.<br />80 Allen Road<br />Glen Austin<br />Midrand</p>
+    <br />
+    <iframe style="width: 100%; height: 350px;" src="https://www.google.com/maps/embed/v1/place?q=80+Allen+Road+Glen+Austin+Midrand&key=AIzaSyDYf2xlYXpSP_hTT2aDUq5KGPwapNKyrRk&zoom=12"></iframe>
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="cl">&nbsp;</div>
+    <div id="project">
+        <p>
+            <strong>Recommended Youtube Channels</strong><br />A list of recommended youtube channels, everything from simple shop jigs to full on expert level projects.<br />
+        </p>
+        <div id="project-slider">
+            <ul>
+                @foreach (var item in ViewBag.youtube)
+                {
+                    <li>
+                        <div style="text-align: center;">
+                            <a href="@item.url" target="_blank"><img src="@item.image_url" style="height: 75px; width: 75px;" /></a>
+                            <strong>@item.channel_name</strong>
+                            <p>@item.description</p>
+                            <a href="@item.url" target="_blank" title="View More">view more <span>&nbsp;</span></a>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

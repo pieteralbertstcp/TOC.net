@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Documents";
+    Layout = "~/MasterTemplate/AuthentucatedMasterTemplate.cshtml";
+}
+<div id="main">
+    <select onchange="GetCategoryFiles($(this).val())" style="width: 250px;">
+        @foreach (var x in ViewBag.FileCategories)
+        {
+            <option value="@x.id">@(x.category_name)</option>
+        }
+    </select>
+
+    @if (ViewBag.Files != null && ViewBag.Files.Count > 0)
+    {
+        
+    }
+    
+</div>
+<script>
+    function GenerateDivForFile(fileName, fileId) {
+
+    }
+
+    function GetCategoryFiles(CategoryId) {
+        
+    }
+</script>

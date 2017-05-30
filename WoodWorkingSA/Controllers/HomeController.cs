@@ -15,7 +15,7 @@ namespace WoodWorkingSA.Controllers
 
 		public ActionResult Index(string message)
 		{
-			ViewBag.youtube = new YoutubeRecommendationsService().GetAll().ToList();
+			ViewBag.youtube = new YoutubeRecommendationsService().GetAll().OrderBy(x=>x.channel_name).ToList();
 			ViewBag.Message = message;
 			return View();
 		}
